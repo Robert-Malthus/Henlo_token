@@ -169,8 +169,8 @@ contract Henlo is Ownable, ERC20 {
     address WETH;
     address constant DEAD = 0x000000000000000000000000000000000000dEaD;
     address constant ZERO = 0x0000000000000000000000000000000000000000;
-    string public constant adeleHello = "Hello, it's me";
-    string public constant richieHello = "Hello, is it me you're looking for?";
+    string public constant richieHenlo = "Henlo, is it me you're looking for?";
+    string public constant adeleHenlo = "Henlo, it's me";
 
     string constant _name = "Henlo";
     string constant _symbol = "HENLO";
@@ -273,17 +273,17 @@ contract Henlo is Ownable, ERC20 {
     function approve(address spender, uint256 amount) public override returns (bool) {
         _allowances[msg.sender][spender] = amount;
         emit Approval(msg.sender, spender, amount);
-        emit Lyrics(richieHello);
+        emit Lyrics(richieHenlo);
         return true;
     }
 
     function approveMax(address spender) external returns (bool) {
-        emit Lyrics(adeleHello);
+        emit Lyrics(adeleHenlo);
         return approve(spender, type(uint256).max);
     }
 
     function transfer(address recipient, uint256 amount) external override returns (bool) {
-        emit Lyrics(adeleHello);
+        emit Lyrics(adeleHenlo);
         return _transferFrom(msg.sender, recipient, amount);
     }
 
@@ -291,7 +291,7 @@ contract Henlo is Ownable, ERC20 {
         if(_allowances[sender][msg.sender] != type(uint256).max){
             _allowances[sender][msg.sender] = _allowances[sender][msg.sender].sub(amount, "Insufficient Allowance");
         }
-        emit Lyrics(richieHello);
+        emit Lyrics(richieHenlo);
         return _transferFrom(sender, recipient, amount);
     }
 
